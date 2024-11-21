@@ -1,0 +1,179 @@
+body.soft-pink-vibes {
+    background: radial-gradient(circle at center, #fbd9e6, #ffd3e2); /* Slightly softer gradient */
+    color: #4a154b;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.container.centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+h1, h2 {
+    text-align: center;
+    font-weight: 600;
+    text-shadow: 0 0 15px rgba(255, 192, 203, 0.9); /* More glowing effect */
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 1.8em; /* Slightly larger for better readability */
+    color: #d973a6;
+}
+
+.soft-header {
+    font-size: 3.5em; /* Larger header size */
+    text-align: center;
+    color: #f78fb3; /* Match with button color */
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 25px; /* Increased spacing for better balance */
+}
+
+.homework:empty::before {
+    content: attr(data-placeholder);
+    font-style: italic;
+    color: #d991b8;
+    opacity: 0.7;
+    font-weight: 500; /* More visible placeholder */
+}
+
+.soft-btn {
+    margin: 12px;
+    padding: 18px 36px; /* Slightly larger buttons */
+    font-size: 1.5em; /* Increased font size */
+    border: 2px solid #dca3c2;
+    border-radius: 12px; /* Slightly softer corners */
+    background: transparent;
+    color: #4a154b;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    animation: buttonWave 3s infinite;
+    box-shadow: 0px 3px 10px rgba(255, 182, 193, 0.4); /* Subtle glow shadow */
+}
+
+button.active {
+    background: linear-gradient(to right, #f78fb3, #fbc4d8);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(255, 182, 193, 0.6);
+}
+
+button.disabled {
+    background: #fadadd;
+    color: #b48a96;
+    cursor: not-allowed;
+}
+
+.schedule {
+    display: grid; /* Keep grid layout */
+    grid-template-columns: repeat(3, 1fr); /* Three columns on desktop */
+    gap: 30px; /* Increased space between panels */
+    padding: 30px; /* More breathing room */
+    overflow-x: auto; /* Horizontal scrolling */
+    scrollbar-width: thin;
+    scrollbar-color: #fbb3d9 transparent;
+}
+
+.day-panel {
+    background-color: #ffedf5;
+    border: 2px solid #fbb3d9;
+    border-radius: 20px; /* Softer rounded corners */
+    padding: 25px; /* Slightly more padding */
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.day-panel:hover {
+    transform: scale(1.05); /* Slightly larger hover effect */
+    box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.subject {
+    font-weight: bold;
+    color: #d973a6;
+    font-size: 1.2em; /* Increased font size for subjects */
+}
+
+.time {
+    font-size: 1em; /* Slightly larger time text */
+    color: #e292b9;
+}
+
+.homework {
+    font-style: italic;
+    color: #d991b8;
+    font-size: 1.1em; /* Slightly larger font for homework */
+    animation: homeworkBounce 2s infinite alternate;
+}
+
+.update-info {
+    margin-top: 12px;
+    font-size: 1em; /* Slightly larger update info */
+    color: #94636b;
+}
+
+@media (max-width: 768px) {
+    .schedule {
+        display: block; /* Stacked layout on mobile */
+        overflow-x: visible;
+        overflow-y: auto;
+        height: 100vh;
+    }
+    
+    .day-panel {
+        flex: 1 1 100%;
+        max-width: none;
+        margin-bottom: 20px; /* More space between panels */
+    }
+    
+    .soft-btn {
+        padding: 12px 24px;
+        font-size: 1.1em;
+    }
+    .soft-header {
+        font-size: 1.8em; /* Larger header size */
+        text-align: center;
+        color: #f78fb3; /* Match with button color */
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes textGlow {
+    from { text-shadow: 0 0 10px rgba(255, 182, 193, 0.5); }
+    to { text-shadow: 0 0 20px rgba(255, 105, 180, 1); }
+}
+
+@keyframes buttonWave {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes panelPop {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes homeworkBounce {
+    from { transform: translateY(0); }
+    to { transform: translateY(-3px); }
+}
