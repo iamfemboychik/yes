@@ -59,24 +59,38 @@ function updatePanel(direction) {
 
         // Проверяем, если текущий предмет — "Литература"
         const actionButton = document.getElementById("action-button");
-
+        const actionButton2 = document.getElementById("action-button-2"); // Для второй кнопки
         if (currentSubject.name === "Литература") {
             if (!actionButton) {
-                // Создаем кнопку, если её нет
+                // Создаем кнопку для Литературы, если её нет
                 const button = document.createElement("button");
                 button.id = "action-button";
-                button.textContent = "Установить файл с ответом";
+                button.textContent = "Установить файлик с ответом";
                 button.className = "action-button"; // Добавляем класс для стилей
                 button.addEventListener("click", () => {
                     window.open("https://us.femboypig.ru/txt.txt", "_blank"); // Открываем ссылку в новом окне
                 });
                 gdzPanel.appendChild(button);
-                homeworkContent.textContent = null;
+            }
+        } else if (currentSubject.name === "ОДНКНР") {
+            if (!actionButton2) {
+                // Создаем кнопку для ОДНКНР, если её нет
+                const button2 = document.createElement("button");
+                button2.id = "action-button-2";
+                button2.textContent = "Установить файлик с ответом";
+                button2.className = "action-button"; // Добавляем класс для стилей
+                button2.addEventListener("click", () => {
+                    window.open("https://us.femboypig.ru/txt2.txt", "_blank"); // Открываем ту же ссылку для ОДНКНР
+                });
+                gdzPanel.appendChild(button2);
             }
         } else {
-            // Удаляем кнопку, если она существует
+            // Удаляем кнопки, если они существуют
             if (actionButton) {
                 actionButton.remove();
+            }
+            if (actionButton2) {
+                actionButton2.remove();
             }
         }
         
