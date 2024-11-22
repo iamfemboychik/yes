@@ -134,3 +134,29 @@ body.soft-pink-vibes {
         width: 10%;
     }
 }
+/* Класс для кнопки */
+.action-button {
+    background-color: #ff66b2; /* Розовый фон */
+    color: white; /* Белый текст */
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px; /* Круглые углы */
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0px 4px 15px rgba(255, 105, 180, 0.6); /* Тень для кнопки */
+    font-family: 'Arial', sans-serif;
+}
+
+/* Эффект при наведении */
+.action-button:hover {
+    background-color: #ff3385; /* Темнее розовый при наведении */
+    transform: scale(1.1); /* Увеличение кнопки при наведении */
+    box-shadow: 0px 6px 20px rgba(255, 105, 180, 0.8); /* Увеличенная тень */
+}
+
+/* Эффект при нажатии */
+.action-button:active {
+    transform: scale(0.95); /* Уменьшение кнопки при нажатии */
+    box-shadow: 0px 2px 10px rgba(255, 105, 180, 0.5); /* Легкая тень при нажатии */
+}

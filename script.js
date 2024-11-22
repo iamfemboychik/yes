@@ -42,6 +42,7 @@ const nextArrow = document.getElementById("next-arrow");
 const gdzPanel = document.getElementById("gdz-panel");
 
 // Обновление панели с анимацией
+// Обновление панели с анимацией
 function updatePanel(direction) {
     const animationOut = direction === "left" ? "slide-out-left" : "slide-out-right";
     const animationIn = direction === "left" ? "slide-in-right" : "slide-in-left";
@@ -56,6 +57,30 @@ function updatePanel(direction) {
         subjectTitle.textContent = currentSubject.name;
         homeworkContent.textContent = currentSubject.homework;
 
+        // Проверяем, если текущий предмет — "Литература"
+        const actionButton = document.getElementById("action-button");
+
+        if (currentSubject.name === "Литература") {
+            if (!actionButton) {
+                // Создаем кнопку, если её нет
+                const button = document.createElement("button");
+                button.id = "action-button";
+                button.textContent = "Установить файл с ответом";
+                button.className = "action-button"; // Добавляем класс для стилей
+                button.addEventListener("click", () => {
+                    window.open("https://us.femboypig.ru/txt.txt", "_blank"); // Открываем ссылку в новом окне
+                });
+                gdzPanel.appendChild(button);
+                homeworkContent.textContent = null;
+            }
+        } else {
+            // Удаляем кнопку, если она существует
+            if (actionButton) {
+                actionButton.remove();
+            }
+        }
+        
+
         gdzPanel.classList.remove(animationOut);
         gdzPanel.classList.add(animationIn);
     }, 400);
@@ -64,6 +89,7 @@ function updatePanel(direction) {
         gdzPanel.classList.remove(animationIn);
     }, 800);
 }
+
 
 // Обработчики событий
 prevArrow.addEventListener("click", () => updatePanel("left"));
