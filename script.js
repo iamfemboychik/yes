@@ -67,17 +67,20 @@ function updatePanel(direction) {
                 button.id = "action-button";
                 button.textContent = "Установить файлик с ответом";
                 button.className = "action-button"; // Добавляем класс для стилей
+                homeworkContent.textContent = null;
                 button.addEventListener("click", () => {
                     window.open("https://us.femboypig.ru/txt.txt", "_blank"); // Открываем ссылку в новом окне
                 });
                 gdzPanel.appendChild(button);
             }
         } else if (currentSubject.name === "ОДНКНР") {
+            actionButton.remove();
             if (!actionButton2) {
                 // Создаем кнопку для ОДНКНР, если её нет
                 const button2 = document.createElement("button");
                 button2.id = "action-button-2";
                 button2.textContent = "Установить файлик с ответом";
+                homeworkContent.textContent = null;
                 button2.className = "action-button"; // Добавляем класс для стилей
                 button2.addEventListener("click", () => {
                     window.open("https://us.femboypig.ru/txt2.txt", "_blank"); // Открываем ту же ссылку для ОДНКНР
