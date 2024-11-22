@@ -53,50 +53,37 @@ function updatePanel(direction) {
         currentIndex = (currentIndex + (direction === "left" ? -1 : 1) + subjects.length) % subjects.length;
         const currentSubject = subjects[currentIndex];
 
+        // Удаляем текст и все кнопки перед обновлением панели
+        homeworkContent.textContent = ""; // Сбрасываем текст
+        const existingButtons = gdzPanel.querySelectorAll(".action-button");
+        existingButtons.forEach(button => button.remove()); // Удаляем все кнопки
+
         // Обновляем текст
         subjectTitle.textContent = currentSubject.name;
         homeworkContent.textContent = currentSubject.homework;
 
-        // Проверяем, если текущий предмет — "Литература"
-        const actionButton = document.getElementById("action-button");
-        const actionButton2 = document.getElementById("action-button-2"); // Для второй кнопки
+        // Проверяем текущий предмет для добавления кнопки
         if (currentSubject.name === "Литература") {
-
-            if (!actionButton) {
-                // Создаем кнопку для Литературы, если её нет
-                const button = document.createElement("button");
-                button.id = "action-button";
-                button.textContent = "Установить файлик с ответом";
-                button.className = "action-button"; // Добавляем класс для стилей
-                homeworkContent.textContent = null;
-                button.addEventListener("click", () => {
-                    window.open("https://us.femboypig.ru/txt.txt", "_blank"); // Открываем ссылку в новом окне
-                });
-                gdzPanel.appendChild(button);
-            }
+            const button = document.createElement("button");
+            button.id = "action-button";
+            homeworkContent.textContent = currentSubject.null;
+            button.textContent = "Установить файлик с ответом";
+            button.className = "action-button"; // Добавляем класс для стилей
+            button.addEventListener("click", () => {
+                window.open("https://us.femboypig.ru/txt.txt", "_blank");
+            });
+            gdzPanel.appendChild(button);
         } else if (currentSubject.name === "ОДНКНР") {
-            if (!actionButton2) {
-                // Создаем кнопку для ОДНКНР, если её нет
-                const button2 = document.createElement("button");
-                button2.id = "action-button-2";
-                button2.textContent = "Установить файлик с ответом";
-                homeworkContent.textContent = null;
-                button2.className = "action-button"; // Добавляем класс для стилей
-                button2.addEventListener("click", () => {
-                    window.open("https://us.femboypig.ru/txt2.txt", "_blank"); // Открываем ту же ссылку для ОДНКНР
-                });
-                gdzPanel.appendChild(button2);
-            }
-        } else {
-            // Удаляем кнопки, если они существуют
-            if (actionButton) {
-                actionButton.remove();
-            }
-            if (actionButton2) {
-                actionButton2.remove();
-            }
+            const button2 = document.createElement("button");
+            button2.id = "action-button-2";
+            button2.textContent = "Установить файлик с ответом";
+            homeworkContent.textContent = currentSubject.null;
+            button2.className = "action-button"; // Добавляем класс для стилей
+            button2.addEventListener("click", () => {
+                window.open("https://us.femboypig.ru/txt2.txt", "_blank");
+            });
+            gdzPanel.appendChild(button2);
         }
-        
 
         gdzPanel.classList.remove(animationOut);
         gdzPanel.classList.add(animationIn);
@@ -106,6 +93,7 @@ function updatePanel(direction) {
         gdzPanel.classList.remove(animationIn);
     }, 800);
 }
+
 
 
 // Обработчики событий
